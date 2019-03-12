@@ -23,4 +23,23 @@ static NSString *_defaultModel;
     NSLog(@"Model name is %@ ",self.model);
 }
 
+-(id) initWithModel:(NSString *)aModel{
+    self = [super init];
+    if(self){
+        _model =[aModel copy];
+        _odometer =0;
+    }
+    return self;
+}
+
+-(id) init{
+    return [self initWithModel:_defaultModel];
+}
+
++(void) initialize{
+    if(self ==[Car class]){
+        _defaultModel = @"defaultModel";
+    }
+}
+
 @end

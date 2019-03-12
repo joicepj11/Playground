@@ -17,6 +17,13 @@ void driver(){
     NSLog(@"New value =%@",toyata.model);
     [toyata drive];
     [Car setDefaultModel:@"Joice"];
+    // initializaton of constructor level object
+    Car *nisan = [[Car alloc] init];
+    NSLog(@"Created a %@",[nisan model]);
+    
+    Car *chevy = [[Car alloc] initWithModel:@"Chevy model"];
+    NSLog(@"Created a %@",chevy.model);
+    
 }
 
 int main(int argc, const char * argv[]) {
