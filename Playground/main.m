@@ -7,10 +7,22 @@
 
 #import <Foundation/Foundation.h>
 
+typedef unsigned char ColorComponent;
+
+void method(){
+    int value = arc4random_uniform(100);
+    NSLog(@"Random value is %d",value);
+
+}
+
+static void printAndIncrement(){
+    static int b =10;
+    NSLog(@"print and increment value =%d",b++);
+}
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        method();
+        printAndIncrement();
     }
     return 0;
 }
