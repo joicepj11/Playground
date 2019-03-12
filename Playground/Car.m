@@ -42,4 +42,12 @@ static NSString *_defaultModel;
     }
 }
 
+-(void) startEngine{
+    _readOnlyProperty = TRUE;
+}
+
+-(void)stopEngine{
+    _readOnlyProperty = FALSE;
+}
+
 @end

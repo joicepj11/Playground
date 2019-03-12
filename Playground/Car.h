@@ -6,16 +6,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Person.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Car : NSObject
 
-@property (copy) NSString *model;
+@property (nonatomic,copy) NSString *model;
 
 -(void) drive;
 +(void) setDefaultModel:(NSString *)aModel;
 -(id) initWithModel:(NSString *)aModel;
+
+
+@property(getter=isRunning) BOOL running;
+@property (readonly) BOOL readOnlyProperty;
+
+-(void)startEngine;
+-(void)stopEngine;
+
+@property (nonatomic,strong) Person *driver;
 
 @end
 

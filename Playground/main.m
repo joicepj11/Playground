@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Car.h"
+#import "Person.h"
 
 void driver(){
     Car *toyata = [[Car alloc] init];
@@ -48,10 +49,36 @@ void dynamicTyping(){
     }
 }
 
+void property(){
+    Car *honda = [[Car alloc] init];
+    honda.running = YES;
+    NSLog(@"Honda is running %d",honda.running);
+    NSLog(@"Honda is running %d",[honda isRunning]);
+    [honda startEngine];
+    NSLog(@"readonlyProperty value %d",honda.readOnlyProperty);
+    
+    Person *person = [[Person alloc]init];
+    [person setName:@"Joice"];
+    
+    [honda setDriver:person];
+    [honda setModel:@"Honda"];
+    
+    NSLog(@"%@ is driving the %@",honda.driver,honda.model);
+    
+    person.car = honda;
+    
+    NSMutableString *model = [NSMutableString stringWithString:@"NSMutableInit"];
+    honda.model =  model; // as this has copy property honda's model variable will have new object.
+    NSLog(@"%@",honda.model);
+    [model setString:@"Modified"];
+    NSLog(@"%@",honda.model);
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        driver();
-        dynamicTyping();
+        //driver();
+       // dynamicTyping();
+        property();
     }
     return 0;
 }
