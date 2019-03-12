@@ -6,23 +6,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Car.h"
 
-typedef unsigned char ColorComponent;
-
-void method(){
-    int value = arc4random_uniform(100);
-    NSLog(@"Random value is %d",value);
-
+void driver(){
+    Car *toyata = [[Car alloc] init];
+    [toyata setModel:@"Toyata"];
+    
+    NSLog(@"Created object %@",[toyata model]);
+    toyata.model = @"Toyata model";
+    NSLog(@"New value =%@",toyata.model);
+    [toyata drive];
+    [Car setDefaultModel:@"Joice"];
 }
 
-static void printAndIncrement(){
-    static int b =10;
-    NSLog(@"print and increment value =%d",b++);
-}
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        method();
-        printAndIncrement();
+        driver();
     }
     return 0;
 }
