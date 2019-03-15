@@ -16,8 +16,7 @@ void driver(){
     NSLog(@"Created object %@",[toyata model]);
     toyata.model = @"Toyata model";
     NSLog(@"New value =%@",toyata.model);
-    [toyata drive];
-    [Car setDefaultModel:@"Joice"];
+
     // initializaton of constructor level object
     Car *nisan = [[Car alloc] init];
     NSLog(@"Created a %@",[nisan model]);
@@ -50,7 +49,7 @@ void dynamicTyping(){
 }
 
 void property(){
-    Car *honda = [[Car alloc] init];
+    /*Car *honda = [[Car alloc] init];
     honda.running = YES;
     NSLog(@"Honda is running %d",honda.running);
     NSLog(@"Honda is running %d",[honda isRunning]);
@@ -71,14 +70,15 @@ void property(){
     honda.model =  model; // as this has copy property honda's model variable will have new object.
     NSLog(@"%@",honda.model);
     [model setString:@"Modified"];
-    NSLog(@"%@",honda.model);
+    NSLog(@"%@",honda.model);*/
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         //driver();
        // dynamicTyping();
-        property();
+        //property();
+        
     }
     return 0;
 }
