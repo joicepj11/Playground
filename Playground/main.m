@@ -7,24 +7,38 @@
 
 #import <Foundation/Foundation.h>
 #import "Car.h"
-#import "Person.h"
-#import "Bicycle.h"
+#import "Car+Maintenance.h"
 
-void protocol(){
-    Bicycle* bike = [[Bicycle alloc] init];
-    [bike startPedaling];
-    [bike lockToStructure:bike];
+void maintenance(){
+    Car *porsche = [[Car alloc]init];
+    porsche.model = @"Porsche 911 Turbo";
+    Car *ford = [[Car alloc]init];
+    ford.model = @"Ford F-150";
     
-    if([bike conformsToProtocol:@protocol(StreetLegal)]){
-        [bike signalStop];
-        [bike signaleLeftTurn];
+    [porsche startEngine];
+    [porsche drive];
+    [porsche turnRight];
+    [porsche turnLeft];
+    
+    if ([porsche needsOilChange]) {
+        [porsche changeOil];
     }
+    [porsche rotateTires];
+    [porsche jumpBatteyUsingCar:ford];
+    
+    // below line will not work because of car+Protected file is not added
+    //[porsche prepareToDrive];
+    
+    SEL protectedMethod = @selector(prepareToDrive);
+    if([porsche respondsToSelector:protectedMethod]){
+        [porsche performSelector:protectedMethod];
+    }
+    
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        protocol();
-        
+        maintenance();
     }
     return 0;
 }
