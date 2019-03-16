@@ -8,40 +8,57 @@
 #import <Foundation/Foundation.h>
 #import "Car.h"
 
-void blocks(){
-    double (^distanceFromRateAndTime)(double rate,double time);
-    distanceFromRateAndTime = ^double(double rate,double time){
-        return rate * time;
-    };
+void errorsException(){
+    NSArray *inventary = @[@"joice",@"is",@"learning"];
+    int selectedIndex =4;
     
-    double dx = distanceFromRateAndTime(35,1.5);
-    NSLog(@"A car driving 35 mph will travel %.2f miles in 1.5 hours.",dx);
+    @try{
+        NSString *car = inventary[selectedIndex];
+        NSLog(@"The selected Car is %@", car);
+    }@catch(NSException *theException){
+        NSLog(@"An Exception occured: %@",theException.name);
+        NSLog(@"Here are some details: %@",theException.reason);
+    }@finally{
+        NSLog(@"Exceuting the finally block");
+    }
+}
+
+void customException(){
+
+    NSException *e = [NSException
+                      exceptionWithName:@"CutomException" reason:@"learning to throw exception" userInfo:nil];
+    @throw e;
+}
+
+void errors(){
+    NSString *fileToLoad = @"/this/path/nothing.txt";
+    NSError *error;
     
-    //closures
-    NSString *make=@"Hondaa";
-    NSString*(^getFullCarName)(NSString *)=^(NSString *model){
-        return [make stringByAppendingFormat:@" %@",model];
-    };
-    
-    NSLog(@"%@",getFullCarName(@"Accord"));
-    
-    __block int i  = 0;
-    
-    int(^count)(void) = ^{
-        i+=1;
-        return i;
-    };
-    
-    NSLog(@"%d",count());
-    
-    Car *theCar = [[Car alloc] init];
-    [theCar driveFromDuration:10.0 withVariableSpeed:^(double time){ return 5.0;} steps:2];
-    
+    NSString *content = [NSString stringWithContentsOfFile:fileToLoad encoding:NSUTF8StringEncoding error:&error];
+    if(content == nil){
+        NSLog(@"Error loading file %@!", fileToLoad);
+        NSLog(@"Domain: %@", error.domain);
+        NSLog(@"Error Code: %ld", error.code);
+        NSLog(@"Description: %@", [error localizedDescription]);
+        NSLog(@"Reason: %@", [error localizedFailureReason]);
+    } else {
+        // Method succeeded
+        NSLog(@"Content loaded!");
+        NSLog(@"%@", content);
+    }
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        blocks();
+        errorsException();
+        errors();
+        @try {
+            customException();
+        } @catch (NSException *exception) {
+            NSLog(@"Reason %@",exception.reason);
+        } @finally {
+            NSLog(@"Always executed ");
+        }
     }
     return 0;
 }
