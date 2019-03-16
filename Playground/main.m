@@ -36,9 +36,24 @@ void cdataType(){
     
 }
 
+void objectivecDataType(){
+    id genericDataType = @"AN NSString object";
+    NSLog(@"%@",[genericDataType description]);
+    genericDataType = @{@"model":@"Ford", @"year":@1967};
+    NSLog(@"%@",[genericDataType description]);
+    
+    Class targetClass = [NSString class];
+    genericDataType =@"An NSString object";
+    if ([genericDataType isKindOfClass:targetClass]) {
+        NSLog(@"yes generic data type is an instance of nsstring");
+    }
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         cdataType();
+        objectivecDataType();
+        
     }
     return 0;
 }
