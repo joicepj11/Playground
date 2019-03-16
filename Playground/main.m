@@ -82,11 +82,64 @@ void nsNumber(){
     NSLog(@"Boolean literal %@",aBoolLiteral);
 }
 
+void nsString(){
+    
+    NSString *make =@"Porsche";
+    NSString *model = @"911";
+    int year = 1968;
+    NSString *message = [NSString stringWithFormat:@"That's a %@ %@ from %d!",make,model,year ];
+    NSLog(@"%@",message);
+    NSString *car = @"Porshe Boxster";
+    
+    //Comparing strings
+    if([car isEqualToString:@"Porshe Boxster"]){
+        NSLog(@"That car is Porshe Boxster");
+    }
+    if([car hasPrefix:@"Porsche"]){
+        NSLog(@"That car is some sort of porsche");
+    }
+    
+    NSString *otherCar = @"Ferrari";
+    NSComparisonResult result = [car compare:otherCar];
+    if(result == NSOrderedAscending){
+        NSLog(@"The letter p comes before f");
+    }else if(result == NSOrderedSame){
+        NSLog(@"We're comparing the same string");
+    }else if(result == NSOrderedDescending){
+        NSLog(@"The letter p comes after f");
+    }
+    
+    //Combining strings
+    make = @"Ferrari";
+    model = @"458 Spider";
+    car = [make stringByAppendingString:model];
+    NSLog(@"%@",car);
+    
+    //Searching strings
+    car = @"Maserati GranCabrio";
+    NSRange searchResult = [car rangeOfString:@"Cabrio"];
+    
+    if(searchResult.location == NSNotFound){
+        NSLog(@"Searching string was not found");
+    }else{
+        NSLog(@"Cabrio starts at index %lu and is %lu character long",searchResult.location,searchResult.length);
+        
+    }
+    
+    //subdividing strings
+    car=@"Masterati GranTurismo";
+    NSLog(@"%@", [car substringFromIndex:9]);
+    NSLog(@"%@", [car substringToIndex:8]);
+    NSRange range = NSMakeRange(9, 4);
+    NSLog(@"%@", [car substringWithRange:range]);
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        cdataType();
 //        objectivecDataType();
-        nsNumber();
+//        nsNumber();
+        nsString();
     }
     return 0;
 }
