@@ -7,38 +7,41 @@
 
 #import <Foundation/Foundation.h>
 #import "Car.h"
-#import "Car+Maintenance.h"
 
-void maintenance(){
-    Car *porsche = [[Car alloc]init];
-    porsche.model = @"Porsche 911 Turbo";
-    Car *ford = [[Car alloc]init];
-    ford.model = @"Ford F-150";
+void blocks(){
+    double (^distanceFromRateAndTime)(double rate,double time);
+    distanceFromRateAndTime = ^double(double rate,double time){
+        return rate * time;
+    };
     
-    [porsche startEngine];
-    [porsche drive];
-    [porsche turnRight];
-    [porsche turnLeft];
+    double dx = distanceFromRateAndTime(35,1.5);
+    NSLog(@"A car driving 35 mph will travel %.2f miles in 1.5 hours.",dx);
     
-    if ([porsche needsOilChange]) {
-        [porsche changeOil];
-    }
-    [porsche rotateTires];
-    [porsche jumpBatteyUsingCar:ford];
+    //closures
+    NSString *make=@"Hondaa";
+    NSString*(^getFullCarName)(NSString *)=^(NSString *model){
+        return [make stringByAppendingFormat:@" %@",model];
+    };
     
-    // below line will not work because of car+Protected file is not added
-    //[porsche prepareToDrive];
+    NSLog(@"%@",getFullCarName(@"Accord"));
     
-    SEL protectedMethod = @selector(prepareToDrive);
-    if([porsche respondsToSelector:protectedMethod]){
-        [porsche performSelector:protectedMethod];
-    }
+    __block int i  = 0;
+    
+    int(^count)(void) = ^{
+        i+=1;
+        return i;
+    };
+    
+    NSLog(@"%d",count());
+    
+    Car *theCar = [[Car alloc] init];
+    [theCar driveFromDuration:10.0 withVariableSpeed:^(double time){ return 5.0;} steps:2];
     
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        maintenance();
+        blocks();
     }
     return 0;
 }

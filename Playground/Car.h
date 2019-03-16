@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)drive;
 -(void) turnLeft;
 -(void) turnRight;
+-(void) driveFromDuration:(double)duration withVariableSpeed:(double (^)(double time))speedFunction steps:(int)numSteps;
 
 @end
 

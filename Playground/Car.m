@@ -34,4 +34,14 @@
     return TRUE;
 }
 
+-(void) driveFromDuration:(double)duration
+        withVariableSpeed:(double (^)(double time))speedFunction
+                    steps:(int)numSteps{
+    double dt = duration / numSteps;
+    for (int i =1; i<=numSteps; i++) {
+        _odometer += speedFunction(i*dt)*dt;
+        NSLog(@"%f odomete",_odometer);
+    }
+}
+
 @end
