@@ -6,59 +6,39 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Car.h"
 
-void errorsException(){
-    NSArray *inventary = @[@"joice",@"is",@"learning"];
-    int selectedIndex =4;
+void cdataType(){
+   
+    char aChar = 'a';
+    unsigned char anUnsignedChar = 255;
+    NSLog(@"The letter %c is ASCII number %hhd", aChar, aChar);
+    NSLog(@"%hhu", anUnsignedChar);
     
-    @try{
-        NSString *car = inventary[selectedIndex];
-        NSLog(@"The selected Car is %@", car);
-    }@catch(NSException *theException){
-        NSLog(@"An Exception occured: %@",theException.name);
-        NSLog(@"Here are some details: %@",theException.reason);
-    }@finally{
-        NSLog(@"Exceuting the finally block");
-    }
-}
-
-void customException(){
-
-    NSException *e = [NSException
-                      exceptionWithName:@"CutomException" reason:@"learning to throw exception" userInfo:nil];
-    @throw e;
-}
-
-void errors(){
-    NSString *fileToLoad = @"/this/path/nothing.txt";
-    NSError *error;
+    short s = 10;
+    int aint  = 255;
+    long along = 12345;
     
-    NSString *content = [NSString stringWithContentsOfFile:fileToLoad encoding:NSUTF8StringEncoding error:&error];
-    if(content == nil){
-        NSLog(@"Error loading file %@!", fileToLoad);
-        NSLog(@"Domain: %@", error.domain);
-        NSLog(@"Error Code: %ld", error.code);
-        NSLog(@"Description: %@", [error localizedDescription]);
-        NSLog(@"Reason: %@", [error localizedFailureReason]);
-    } else {
-        // Method succeeded
-        NSLog(@"Content loaded!");
-        NSLog(@"%@", content);
-    }
+    NSLog(@"short value = %hd , int value =%d, long value =%ld",s,aint,along);
+    //The hh, h, l and ll characters are modifiers that tell NSLog() to treat the associated integer as a char, short, long, or long long, respectively.
+    
+    // Determining type size
+    NSLog(@"Size of char: %zu", sizeof(char)); // This will always be 1
+    NSLog(@"Size of short: %zu", sizeof(short));
+    NSLog(@"Size of int: %zu", sizeof(int));
+    NSLog(@"Size of long: %zu", sizeof(long));
+    NSLog(@"Size of long long: %zu", sizeof(long long));
+    NSLog(@"Size of float: %zu", sizeof(float));
+    NSLog(@"Size of double: %zu", sizeof(double));
+    NSLog(@"Size of size_t: %zu", sizeof(size_t));
+    
+    //macros
+    NSLog(@"min and max value of int is %d and %d",INT_MIN,INT_MAX);
+    
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        errorsException();
-        errors();
-        @try {
-            customException();
-        } @catch (NSException *exception) {
-            NSLog(@"Reason %@",exception.reason);
-        } @finally {
-            NSLog(@"Always executed ");
-        }
+        cdataType();
     }
     return 0;
 }

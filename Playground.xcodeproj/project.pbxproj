@@ -7,12 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A964F78D223C0E100002506C /* Bicycle.m in Sources */ = {isa = PBXBuildFile; fileRef = A964F78C223C0E100002506C /* Bicycle.m */; };
-		A9EDD2CF223CE62F00FA9172 /* Car+Protected.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EDD2CE223CE62F00FA9172 /* Car+Protected.m */; };
-		A9EFE62A223C29F10056E981 /* Car+Maintenance.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EFE629223C29F10056E981 /* Car+Maintenance.m */; };
 		A9F45CA42237BDD00054F386 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F45CA32237BDD00054F386 /* main.m */; };
-		A9FC07CF2237F4A7002A40B5 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FC07CE2237F4A7002A40B5 /* Car.m */; };
-		A9FC07D2223822A1002A40B5 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FC07D1223822A1002A40B5 /* Person.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,19 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A964F78A223C0D6F0002506C /* StreetLegal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreetLegal.h; sourceTree = "<group>"; };
-		A964F78B223C0E100002506C /* Bicycle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bicycle.h; sourceTree = "<group>"; };
-		A964F78C223C0E100002506C /* Bicycle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bicycle.m; sourceTree = "<group>"; };
-		A9EDD2CD223CE62F00FA9172 /* Car+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Car+Protected.h"; sourceTree = "<group>"; };
-		A9EDD2CE223CE62F00FA9172 /* Car+Protected.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Car+Protected.m"; sourceTree = "<group>"; };
-		A9EFE628223C29F10056E981 /* Car+Maintenance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Car+Maintenance.h"; sourceTree = "<group>"; };
-		A9EFE629223C29F10056E981 /* Car+Maintenance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Car+Maintenance.m"; sourceTree = "<group>"; };
 		A9F45CA02237BDD00054F386 /* Playground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Playground; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F45CA32237BDD00054F386 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A9FC07CD2237F4A7002A40B5 /* Car.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
-		A9FC07CE2237F4A7002A40B5 /* Car.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
-		A9FC07D0223822A1002A40B5 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		A9FC07D1223822A1002A40B5 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,17 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				A9F45CA32237BDD00054F386 /* main.m */,
-				A964F78A223C0D6F0002506C /* StreetLegal.h */,
-				A964F78B223C0E100002506C /* Bicycle.h */,
-				A964F78C223C0E100002506C /* Bicycle.m */,
-				A9EDD2CD223CE62F00FA9172 /* Car+Protected.h */,
-				A9EDD2CE223CE62F00FA9172 /* Car+Protected.m */,
-				A9FC07CD2237F4A7002A40B5 /* Car.h */,
-				A9FC07CE2237F4A7002A40B5 /* Car.m */,
-				A9FC07D0223822A1002A40B5 /* Person.h */,
-				A9FC07D1223822A1002A40B5 /* Person.m */,
-				A9EFE628223C29F10056E981 /* Car+Maintenance.h */,
-				A9EFE629223C29F10056E981 /* Car+Maintenance.m */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -144,12 +117,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9FC07D2223822A1002A40B5 /* Person.m in Sources */,
-				A9EFE62A223C29F10056E981 /* Car+Maintenance.m in Sources */,
-				A9FC07CF2237F4A7002A40B5 /* Car.m in Sources */,
 				A9F45CA42237BDD00054F386 /* main.m in Sources */,
-				A964F78D223C0E100002506C /* Bicycle.m in Sources */,
-				A9EDD2CF223CE62F00FA9172 /* Car+Protected.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
