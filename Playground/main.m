@@ -185,13 +185,38 @@ void nsSet(){
     NSLog(@"%@", toyotaModels1); // Corolla, Camry
 }
 
+void nsArray(){
+    NSArray *array = @[@"Mercedes-Benz",@"BMW",@"Audi"];
+    for (NSString *item in array) {
+        NSLog(@"%@",item);
+    }
+    NSArray *sameArray = [NSArray arrayWithObjects: @"Mercedes-Benz",@"BMW",@"Audi", nil];
+    
+    if ([array isEqualToArray:sameArray]) {
+        NSLog(@"Both are same array");
+    }
+    // sorting array
+    NSArray *germanMakes = @[@"Mercedes-Benz", @"BMW", @"Porsche", @"Opel", @"Volkswagen", @"Audi"];
+    NSArray *sortedMakes = [germanMakes sortedArrayUsingComparator: ^NSComparisonResult(id obj1, id obj2) {
+        if ([obj1 length] < [obj2 length]) {
+            return NSOrderedAscending;
+        } else if ([obj1 length] > [obj2 length]) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+    NSLog(@"%@", sortedMakes);
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        cdataType();
 //        objectivecDataType();
 //        nsNumber();
 //        nsString();
-        nsSet();
+        //nsSet();
+        nsArray();
     }
     return 0;
 }
