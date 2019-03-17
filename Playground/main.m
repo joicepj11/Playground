@@ -134,12 +134,64 @@ void nsString(){
     NSLog(@"%@", [car substringWithRange:range]);
 }
 
+void nsSet(){
+    //creating Sets
+    NSSet *americanMakes = [NSSet setWithObjects:@"Chrysler", @"Ford", nil];
+    NSLog(@"%@",americanMakes);
+    //sets with array
+    NSArray *japaneseMakes = @[@"honda",@"Mazda",@"Mazda"];
+    NSSet *uniqueMakes = [NSSet setWithArray:japaneseMakes];
+    NSLog(@"%@",uniqueMakes);
+    
+    //enumerating sets
+    NSSet *models = [NSSet setWithObjects:@"Civic", @"Accord", @"Odyssey", @"Pilot", @"Fit", nil];
+    NSLog(@"The set has %li elements", [models count]);
+    for (id item in models) {
+        NSLog(@"%@", item);
+    }
+    
+    [models enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        NSLog(@"Current item: %@", obj);
+        if ([obj isEqualToString:@"Fit"]) {
+            NSLog(@"I was looking for a Honda Fit, and I found it!");
+            *stop = YES; // Stop enumerating items
+        }
+    }];
+    
+    //Filtering sets
+    NSSet *toyotaModels = [NSSet setWithObjects:@"Corolla", @"Sienna", @"Camry", @"Prius",@"Highlander", @"Sequoia", nil];
+    
+    NSSet *cModels =
+    [toyotaModels objectsPassingTest:^BOOL(id obj, BOOL *stop) {
+        if ([obj hasPrefix:@"C"]) {
+            return YES;
+        } else {
+            return NO;
+        }
+    }];
+    NSLog(@"cModels %@", cModels); // Corolla, Camry
+    
+    //filtering with predicates
+    NSMutableSet *toyotaModels1 = [NSMutableSet setWithObjects:@"Corolla", @"Sienna",@"Camry", @"Prius",@"Highlander", @"Sequoia", nil];
+    NSPredicate *startsWithC = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject hasPrefix:@"C"]) {
+            return YES;
+        } else {
+            return NO;
+        }
+    }];
+    
+    [toyotaModels1 filterUsingPredicate:startsWithC];
+    NSLog(@"%@", toyotaModels1); // Corolla, Camry
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        cdataType();
 //        objectivecDataType();
 //        nsNumber();
-        nsString();
+//        nsString();
+        nsSet();
     }
     return 0;
 }
